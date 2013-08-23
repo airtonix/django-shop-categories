@@ -7,7 +7,9 @@ from shop_categories.utils import get_category_model_string
 class CategoryProductBase(BaseProduct):
     main_category = TreeForeignKey(get_category_model_string('Category'))
     additional_categories = TreeManyToManyField(
-        get_category_model_string('Category'), related_name='extra_product_categories')
+        get_category_model_string('Category'),
+        related_name='extra_product_categories',
+        blank=True, null=True)
 
     class Meta:
         abstract = True
